@@ -1,0 +1,2 @@
+https://www.linode.com/docs/guides/how-to-install-and-set-up-hadoop-cluster/
+https://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-common/ClusterSetup.html

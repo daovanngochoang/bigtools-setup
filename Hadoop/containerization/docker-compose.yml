@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  master-node:
+    build:
+      dockerfile: dockerfile/master-nodeDockerfile
+    container_name: master-node
+    ports:
+    - 9870:9870
+    - 9000:9000
+    restart: always
+    volumes:
+    - master-node:/hadoop
+  # slave-node-1:
+  #   build: 
+  #   container_name: slave-node-1
+  #   restart: always
+  #   port: 
+  #     - 9870:9870
+  #     - 9000:9000
+  #   volumes:
+  #     - slave-node-1:/hadoop
+  # slave-node-2:
+  #   build: 
+  #   container_name: slave-node-2
+  #   restart: always
+  #   port: 
+  #     - 9870:9870
+  #     - 9000:9000
+  #   volumes:
+  #     - slave-node-2:/hadoop
+volumes:
+  master-node:
+  # hadoop_datanode:
