@@ -41,7 +41,7 @@ write_env_variable(){
     echo "# set master node" >> ~/.bashrc
     echo "export MASTER_NODE=${master_host}" >> ~/.bashrc
 
-    source .bashrc
+    source ~/.bashrc
 
     echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh"
     echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
