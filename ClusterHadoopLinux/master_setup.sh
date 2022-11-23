@@ -5,6 +5,7 @@ source commons_funcs.sh
 
 
 
+
 generate_hosts_n_workers (){
     echo $master_host >> workers
     echo "${master_ip}       ${master_host}" >> hosts
