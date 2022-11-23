@@ -1,5 +1,5 @@
 #!/bin/bash
-source utils.sh
+source commons_funcs.sh
 source env_config.sh
 
 # add env to .bashrc

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# import functions from utils.sh file
-source utils.sh
+# import functions from commons_funcs.sh file
+source commons_funcs.sh
 
 
 
