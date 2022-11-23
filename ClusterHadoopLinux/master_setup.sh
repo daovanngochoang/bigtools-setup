@@ -79,7 +79,7 @@ cp_to_slaves(){
     do 
         target_host=slave_${c}_host
 
-        echo "coping to ${!target_host} ...."
+        echo "coping to ${!target_host} .... " \n\n\n
 
         ssh  ${!target_host} "mkdir -p ${target_folder}"
 
@@ -109,7 +109,7 @@ cp_to_slaves(){
 download_hadoop(){
 
     # download hadoop and extract
-    echo "installing hadoop version ..."
+    echo "installing hadoop version $hadoop_version ..." \n\n\n
 
     # download hadoop 
     curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
@@ -137,19 +137,20 @@ source env_config.sh
 ./write_config.sh
 
 # add env to .bashrc
-echo "setup env variables to .bashrc "
+echo "setup env variables to .bashrc "\n\n\n
 write_env_variable
 
 # add config to hadoop config 
-echo "add hadoop xml files config to hadoop etc .... \n "
+echo "add hadoop xml files config to hadoop etc .... "\n\n\n
 cp config/* $HADOOP_HOME/etc/hadoop/ 
 
 #generate host file
+echo "generate host file" \n\n\n
 generate_hosts_n_workers
 
 
 # cp hosts to host file
-echo "config hosts and workers ... \n"
+echo "config hosts and workers ... "\n\n
 cat hosts | sudo tee -a /etc/hosts  
 cp workers $HADOOP_HOME/etc/hadoop/ 
 

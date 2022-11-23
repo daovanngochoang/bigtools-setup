@@ -9,9 +9,6 @@ source ~/.bashrc
 
 extract_hadoop
 
-# cp hadoop to /opt/hadoop
-sudo mv hadoop /opt/hadoop
-
 # add config to hadoop config 
 cp config/* $HADOOP_HOME/etc/hadoop/ 
 
