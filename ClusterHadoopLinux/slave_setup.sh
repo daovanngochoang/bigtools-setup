@@ -3,21 +3,18 @@ source utils.sh
 source env_config.sh
 
 # add env to .bashrc
-env_setup
+write_env_variable
+
+bash write_config.sh
+
+source ~/.bashrc
 
 # cp hadoop to /opt/hadoop
-mv hadoop /opt/hadoop
-
-# add config to hadoop config 
-cp config/* $HADOOP_HOME/etc/hadoop/ 
-
-# add env to .bashrc
-env_setup
+sudo mv hadoop /opt/hadoop
 
 # add config to hadoop config 
 cp config/* $HADOOP_HOME/etc/hadoop/ 
 
 # cp hosts to host file
-sudo cat hosts >> /etc/hosts
-cp workers $HADOOP_HOME/etc/hadoop/ 
+cat hosts | sudo tee -a /etc/hosts  
 

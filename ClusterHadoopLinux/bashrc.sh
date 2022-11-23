@@ -16,5 +16,3 @@ export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 
 
-# set master node
-export MASTER_NODE=${master_host}

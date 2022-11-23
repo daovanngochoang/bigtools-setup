@@ -31,28 +31,30 @@ cp_to_slaves(){
     for (( c=1; c<=$n_slaves; c++ ))
     do 
         target_host=slave_${c}_host
-        target_user=slave_${c}_username
 
         echo "coping to ${!target_host} ...."
 
         # cp hadoop to slaves
-        scp -r $HADOOP_HOME ${!target_user}@${!target_host}:~/hadoop_installation/
+        scp -r $HADOOP_HOME ${!target_host}:~/hadoop_installation/
 
         #cp utils functions to slaves
-        scp -r utils.sh ${!target_user}@${!target_host}:~/hadoop_installation/
+        scp -r utils.sh ${!target_host}:~/hadoop_installation/
 
         #cp config to slaves
-        scp -r config ${!target_user}@${!target_host}:~/hadoop_installation/
+        scp -r config ${!target_host}:~/hadoop_installation/
 
         #cp slave setup file to target host
-        scp -r slave_setup.sh ${!target_user}@${!target_host}:~/hadoop_installation/
+        scp -r slave_setup.sh ${!target_host}:~/hadoop_installation/
 
         #scp env config
-        scp -r env_config.sh ${!target_user}@${!target_host}:~/hadoop_installation/
+        scp -r env_config.sh ${!target_host}:~/hadoop_installation/
 
-        scp -r hosts ${!target_user}@${!target_host}:~/hadoop_installation/
+        scp -r hosts ${!target_host}:~/hadoop_installation/
 
-        scp -r workers ${!target_user}@${!target_host}:~/hadoop_installation/
+        scp -r workers ${!target_host}:~/hadoop_installation/
+
+        scp -r bashrc.sh ${!target_host}:~/hadoop_installation/
+
 
     done
 }
@@ -78,8 +80,7 @@ generate_hosts_n_workers ()
 }
 
 
-generate_host_infor(){
-
+generate_setup_env(){
 
     count=0
     target="env_config.sh"
@@ -99,7 +100,6 @@ generate_host_infor(){
                 echo "# master info" >> $target
                 echo "export master_ip=${string[0]} " >> $target
                 echo "export master_host=${string[1]} " >> $target
-                echo "export master_username=${string[2]} " >> $target
                 echo "   
                 
                 ">> $target
@@ -109,7 +109,6 @@ generate_host_infor(){
                 echo "# slave ${count} info" >> $target
                 echo "export slave_${count}_ip=${string[0]} " >> $target
                 echo "export slave_${count}_host=${string[1]} " >> $target
-                echo "export slave_${count}_username=${string[2]}" >> $target
                 echo "  
                 
                 " >> $target
@@ -126,7 +125,7 @@ generate_host_infor(){
 
 
 
-env_setup(){
+write_env_variable(){
 
     sudo apt-get install openjdk-8-jdk net-tools curl netcat gnupg openssh-server libsnappy-dev -y
 
@@ -137,8 +136,10 @@ env_setup(){
     HADOOP_HOME=/opt/hadoop
 
     cat bashrc.sh  >> ~/.bashrc
+    echo "# set master node" >> ~/.bashrc
+    echo "export MASTER_NODE=${master_host}" >> ~/.bashrc
 
-    source ~/.bashrc
-
+    
+    
     echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 }
