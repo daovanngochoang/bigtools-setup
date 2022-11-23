@@ -57,7 +57,7 @@ yarn_site="""
 
     <property>
             <name>yarn.resourcemanager.hostname</name>
-            <value>${MASTER_NODE}</value>
+            <value>${master_host}</value>
     </property>
 
     <property>
