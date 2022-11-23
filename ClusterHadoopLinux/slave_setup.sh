@@ -5,8 +5,6 @@ source env_config.sh
 # add env to .bashrc
 write_env_variable
 
-source ~/.bashrc
-
 extract_hadoop
 
 # add config to hadoop config 

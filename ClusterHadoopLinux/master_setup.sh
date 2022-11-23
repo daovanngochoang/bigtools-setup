@@ -156,7 +156,7 @@ cp workers $HADOOP_HOME/etc/hadoop/
 
 cp_to_slaves
 
-source .bashrc
+source ~/.bashrc
 
 
 

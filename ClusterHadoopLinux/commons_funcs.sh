@@ -12,7 +12,7 @@ extract_hadoop(){
     echo "
     
     "
-    tar -xzvf hadoop-$hadoop_version.tar.gz
+    tar -xzf hadoop-$hadoop_version.tar.gz
     mv hadoop-$hadoop_version hadoop
     sudo mv hadoop /opt/hadoop 
 }
