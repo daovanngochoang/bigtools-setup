@@ -1,9 +1,9 @@
 # master ip should be first
 #IP                     hostname                
 
-172.16.96.101       master
-172.16.96.102     slave-1
-172.16.96.100     slave-2
+172.16.96.103       master
+172.16.96.104     slave-1
+172.16.96.105     slave-2
 
 
 
