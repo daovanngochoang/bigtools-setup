@@ -5,7 +5,6 @@ source commons_funcs.sh
 
 
 
-
 generate_hosts_n_workers (){
     echo $master_host >> workers
     echo "${master_ip}       ${master_host}" >> hosts
@@ -133,12 +132,12 @@ extract_hadoop  #from utils
 generate_setup_env
 source env_config.sh
 
-# write config
-./write_config.sh
-
 # add env to .bashrc
 echo "setup env variables to .bashrc "\n\n\n
 write_env_variable
+
+# write config
+./write_config.sh
 
 # add config to hadoop config 
 echo "add hadoop xml files config to hadoop etc .... "\n\n\n
@@ -156,6 +155,9 @@ cp workers $HADOOP_HOME/etc/hadoop/
 
 
 cp_to_slaves
+
+source .bashrc
+
 
 
 

@@ -28,8 +28,8 @@ write_env_variable(){
     sudo apt-get install openjdk-8-jdk net-tools curl netcat gnupg openssh-server libsnappy-dev -y
 
 
-    JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
-    HADOOP_HOME=/opt/hadoop
+    export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    export HADOOP_HOME=/opt/hadoop
 
     echo "cat bashrc.sh  >> ~/.bashrc"
     echo "
