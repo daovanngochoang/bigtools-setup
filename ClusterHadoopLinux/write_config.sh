@@ -1,5 +1,4 @@
 #!/bin/bash
-source utils.sh
 source env_config.sh
 
 

@@ -90,7 +90,7 @@ cp_to_slaves(){
         scp -r config ${!target_host}:~/${target_folder}
 
         #cp utils functions to slaves
-        scp utils.sh ${!target_host}:~/${target_folder}
+        scp commons_funcs.sh ${!target_host}:~/${target_folder}
 
         #cp slave setup file to target host
         scp slave_setup.sh ${!target_host}:~/${target_folder}
@@ -129,12 +129,12 @@ download_hadoop
 extract_hadoop  #from utils
 
 
-# write config
-./write_config.sh
-
 #generate host file 
 generate_setup_env
 source env_config.sh
+
+# write config
+./write_config.sh
 
 # add env to .bashrc
 echo "setup env variables to .bashrc "
