@@ -7,6 +7,8 @@ write_env_variable
 
 source ~/.bashrc
 
+extract_hadoop
+
 # cp hadoop to /opt/hadoop
 sudo mv hadoop /opt/hadoop
 
