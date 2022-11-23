@@ -27,7 +27,7 @@ cp_to_slaves(){
 
     #authorize key must be cp to the slaves and successfully tested first.
     #number of slaves must be config in the env file.
-    target_folder=bigdata-tools-setup/hadoop
+    target_folder=""
 
     for (( c=1; c<=$n_slaves; c++ ))
     do 
