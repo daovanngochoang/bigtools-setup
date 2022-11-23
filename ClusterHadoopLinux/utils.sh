@@ -14,9 +14,9 @@ download_hadoop(){
     wget https://dlcdn.apache.org/hadoop/common/hadoop-$hadoop_version/hadoop-$hadoop_version.tar.gz
 
     # extract and rename to make it simple name.
-    tar -xzvf hadoop-$hadoop_version.tar.gz
-    mv hadoop-$hadoop_version hadoop
+    mv hadoop-$hadoop_version.tar.gz hadoop.tar.gz
 
+    tar -xzvf hadoop.tar.gz
     sudo mv hadoop /opt/hadoop 
 }
 
@@ -27,6 +27,7 @@ cp_to_slaves(){
 
     #authorize key must be cp to the slaves and successfully tested first.
     #number of slaves must be config in the env file.
+    target_folder=bigdata-tools-setup/hadoop
 
     for (( c=1; c<=$n_slaves; c++ ))
     do 
@@ -34,27 +35,28 @@ cp_to_slaves(){
 
         echo "coping to ${!target_host} ...."
 
+        ssh  ${!target_host} "mkdir -p ${target_folder}"
+
         # cp hadoop to slaves
-        scp -r $HADOOP_HOME ${!target_host}:~/hadoop_installation/
+        scp -r  ${!target_host}:~/${target_folder}
+        
+        #config
+        scp -r config ${!target_host}:~/${target_folder}
 
         #cp utils functions to slaves
-        scp -r utils.sh ${!target_host}:~/hadoop_installation/
-
-        #cp config to slaves
-        scp -r config ${!target_host}:~/hadoop_installation/
+        scp utils.sh ${!target_host}:~/${target_folder}
 
         #cp slave setup file to target host
-        scp -r slave_setup.sh ${!target_host}:~/hadoop_installation/
+        scp slave_setup.sh ${!target_host}:~/${target_folder}
 
         #scp env config
-        scp -r env_config.sh ${!target_host}:~/hadoop_installation/
+        scp env_config.sh ${!target_host}:~/${target_folder}
 
-        scp -r hosts ${!target_host}:~/hadoop_installation/
+        scp hosts ${!target_host}:~/${target_folder}
 
-        scp -r workers ${!target_host}:~/hadoop_installation/
+        scp workers ${!target_host}:~/${target_folder}
 
-        scp -r bashrc.sh ${!target_host}:~/hadoop_installation/
-
+        scp bashrc.sh ${!target_host}:~/${target_folder}
 
     done
 }
@@ -70,8 +72,6 @@ generate_hosts_n_workers ()
         target_host=slave_${c}_host
         target_ip=slave_${c}_ip
 
-        echo ${!target_host}
-        echo "${!target_ip}     ${!target_host}"
         echo ${!target_host} >> workers
         echo "${!target_ip}     ${!target_host}"  >> hosts
 
@@ -139,7 +139,6 @@ write_env_variable(){
     echo "# set master node" >> ~/.bashrc
     echo "export MASTER_NODE=${master_host}" >> ~/.bashrc
 
-    
     
     echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 }

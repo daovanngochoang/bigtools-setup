@@ -5,8 +5,6 @@ source env_config.sh
 # add env to .bashrc
 write_env_variable
 
-bash write_config.sh
-
 source ~/.bashrc
 
 # cp hadoop to /opt/hadoop

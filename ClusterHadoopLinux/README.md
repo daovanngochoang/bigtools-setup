@@ -39,11 +39,11 @@ git clone https://github.com/daovanngochoang/bigdata-tools-setup.git
 2. Modify the ***cluster_infor.txt*** file. This file should contain the folowing infor and in the order of master infor first then the slave infor. They must have the same username.
 ```txt
 # master ip should be first
-#IP                     hostname                 username 
-172.16.96.93            master                   hadoop
-172.16.96.92            slave-1                  hadoop
-172.16.96.91            slave-2                  hadoop
-172.16.96.94            slave-3                  hadoop
+#IP                     hostname                 
+172.16.96.93            master      
+172.16.96.92            slave-1     
+172.16.96.91            slave-2     
+172.16.96.94            slave-3     
 
 ```
 
@@ -121,22 +121,5 @@ yarn jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.2.jar
 ```bash
 hdfs dfs -cat output/part-r-00000 | less
 ```
-
-
-## Code explain section.
-
-
-### The *utils.sh* file.
-
-### The *config* folder.
-
-### The *cluster_infor.txt* file.
- 
-### The *utils.sh* file.
-
-### The *write_config.sh* file.
-1.  Write hadoop xml config.
-2. 
-
 
 
