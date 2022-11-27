@@ -13,12 +13,12 @@ chmod 0600 ~/.ssh/authorized_keys
 - Change the *slave_username* with the user name of the target slave.
 - Change the *slave_ip* with the ip of the target slave.
 ```bash
-scp ~/.ssh/authorized_keys slave_username@splave_ip:~/.ssh/authorized_keys
+scp ~/.ssh/authorized_keys splave_ip:~/.ssh/authorized_keys
 ```
 
 Example: 
 ```bash
-scp .ssh/authorized_keys slave-1@192.168.1.2:~/.ssh/authorized_keys
+scp .ssh/authorized_keys 192.168.1.2:~/.ssh/authorized_keys
 ```
 
 Then try to connect to the target slave with ssh.
