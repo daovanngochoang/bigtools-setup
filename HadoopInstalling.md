@@ -1,9 +1,9 @@
-## Introduction.
+# Introduction.
 1. This is a flexible tutorial that help you install hadoop on both [single node](https://github.com/daovanngochoang/bigdata-tools-setup/blob/main/HadoopInstalling.md#hadoop-installation-on-single-node-cluster) and [multiple nodes cluster](https://github.com/daovanngochoang/bigdata-tools-setup/blob/main/HadoopInstalling.md#hadoop-installation-on-multiple-nodes-cluster).
 3. There are several important file we are going to change that are the xml config file, workers and hosts file, read carefully my explaination before editing the file.
 4. The last section we try to [run](https://github.com/daovanngochoang/bigdata-tools-setup/blob/main/HadoopInstalling.md#run-hadoop) the setup.
 
-## Hadoop installation on single node cluster.
+# Hadoop installation on single node cluster.
 
 ### Step 1:  Generate SSH key and test ssh
 ```bash
@@ -142,7 +142,7 @@ echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 " >> $HADOOP_HOME/etc/h
 ```
 
 
-## Hadoop installation on multiple nodes cluster.
+# Hadoop installation on multiple nodes cluster.
 
 ### Note
 1. The master machine should be the machine that you are currently working on the installation process.
