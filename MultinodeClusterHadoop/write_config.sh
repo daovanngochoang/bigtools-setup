@@ -11,20 +11,7 @@ core_site="""<configuration>
 
 
 hdfs_site="""
-<configuration>
-    <property>
-        <name>dfs.namenode.name.dir</name>
-        <value>file://${HOME}/hadoop/data/nameNode</value>
-    </property>
-    <property>
-        <name>dfs.datanode.data.dir</name>
-        <value>file://${HOME}/hadoop/data/dataNode</value>
-    </property>
-    <property>
-        <name>dfs.replication</name>
-        <value>2</value>
-    </property>
-</configuration>
+
 """
 
 mapred_site="""
