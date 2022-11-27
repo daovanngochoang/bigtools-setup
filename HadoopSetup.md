@@ -1,7 +1,8 @@
 # Introduction.
 1. This is a flexible tutorial that help you install hadoop on both [single node](https://github.com/daovanngochoang/bigdata-tools-setup/blob/main/HadoopSetup.md#hadoop-installation-on-single-node-cluster) and [multiple nodes cluster](https://github.com/daovanngochoang/bigdata-tools-setup/blob/main/HadoopSetup.md#hadoop-installation-on-multiple-nodes-cluster).
-3. There are several important file we are going to change that are the xml config file, workers and hosts file, read carefully my explaination before editing the file.
-4. The last section we try to [run](https://github.com/daovanngochoang/bigdata-tools-setup/blob/main/HadoopSetup.md#run-hadoop) the setup.
+2. There are several important file we are going to change that are the xml config file, workers and hosts file, read carefully my explaination before editing the file.
+3. The last section we try to [run](https://github.com/daovanngochoang/bigdata-tools-setup/blob/main/HadoopSetup.md#run-hadoop) the setup.
+4. I recommend that you shold create a user named **hadoop**
 
 # Hadoop installation on single node cluster.
 
@@ -29,8 +30,8 @@ sudo apt-get install openjdk-8-jdk \
 curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
 
-tar -xzf hadoop-$hadoop_version.tar.gz
-mv hadoop-$hadoop_version hadoop
+tar -xzf hadoop-3.3.1.tar.gz
+mv hadoop-3.3.1 hadoop
 sudo mv hadoop /opt/hadoop
 ```
 
@@ -51,10 +52,6 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin 
 export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib/native"
 
-# the master_node indicate the master node in the hadoop cluster
-# in this case we install only 1 cluster on 1 machine then 
-# the master node is the localhost.
-export MASTER_NODE="localhost"
 
 ```
 
@@ -65,22 +62,23 @@ export MASTER_NODE="localhost"
 <configuration>
 	<property>
 		<name>fs.default.name</name>
-		<value>hdfs://${MASTER_NODE}:9000</value>
+		<value>hdfs://${localhost}:9000</value>
 	</property>
 </configuration>
 ```
 <br />
 
-2. Edit **$HADOOP_HOME/etc/hadoop/hdfs-site.xml**
+1. Edit **$HADOOP_HOME/etc/hadoop/hdfs-site.xml**.
+- Remember to change the user_name to your user name.
 ```xml
 <configuration>
 	<property>
 		<name>dfs.namenode.name.dir</name>		
-		<value>file://${HOME}/hadoop/data/nameNode</value>		
+		<value>file:///home/{user_name}/hadoop/data/nameNode</value>		
 	</property>	
 	<property>	
 		<name>dfs.datanode.data.dir</name>		
-		<value>file://${HOME}/hadoop/data/dataNode</value>		
+		<value>file:///home/{user_name}/hadoop/data/dataNode</value>		
 	</property>	
 	<property>		
 		<name>dfs.replication</name>		
@@ -90,7 +88,7 @@ export MASTER_NODE="localhost"
 ```
 <br />
 
-3. Edit **$HADOOP_HOME/etc/hadoop/mapred-site.xml**
+1. Edit **$HADOOP_HOME/etc/hadoop/mapred-site.xml**
 ```xml
 <configuration>
 	<property>
@@ -113,7 +111,8 @@ export MASTER_NODE="localhost"
 ```
 <br />
 
-4. Edit **$HADOOP_HOME/etc/hadoop/yarn-site.xml** in the yanr-site, which node will manager all resources. We will use master node to manage all the other nodes.
+1. Edit **$HADOOP_HOME/etc/hadoop/yarn-site.xml** in the yanr-site, which node will manager all resources. We will use master node to manage all the other nodes.
+- Remember to change the ${MASTER_NODE} to the actual master host name, in my case it's "master".
 ```xml
 <configuration>
 	<property>
@@ -136,7 +135,7 @@ export MASTER_NODE="localhost"
 ```
 <br />
 
-5. add to ***$HADOOP_HOME/etc/hadoop/hadoop-env.sh***
+1. add to ***$HADOOP_HOME/etc/hadoop/hadoop-env.sh***
 ```bash
 echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 " >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 ```
@@ -147,6 +146,7 @@ echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 " >> $HADOOP_HOME/etc/h
 ### Note
 1. The master machine should be the machine that you are currently working on the installation process.
 2. Both master machine and slave machines should have the same user, for example on master we have the user name hadoop then all the slaves should have the hadoop user to make things work. it's the the easiest way to install hadoop.
+3. I recommend that you shold create a user named **hadoop** for all machines, the master hostname should keep **master** and slaves hostname should be **slave-** + number.
 
 ### Step 1: edit */etc/hosts* file. *(Both on the master and slaves)*
 1. open file with text editor as super user.
@@ -240,6 +240,7 @@ export MASTER_NODE="master"
 ### Step 6: Edit Config file *(Both on the master and slaves)*
 
 1. Edit **$HADOOP_HOME/etc/hadoop/core-site.xml** to decide what is the master node.
+- Remember to change the ${MASTER_NODE} to the actual master host name, in my case it's "master".
 ```xml
 <configuration>
 	<property>
@@ -250,15 +251,16 @@ export MASTER_NODE="master"
 ```
 
 2. Edit **$HADOOP_HOME/etc/hadoop/hdfs-site.xml**
+- Remember to change the **user_name** to your user name.
 ```xml
 <configuration>
 	<property>
 		<name>dfs.namenode.name.dir</name>		
-		<value>file://${HOME}/hadoop/data/nameNode</value>		
+		<value>file:///home/{user_name}/hadoop/data/nameNode</value>		
 	</property>	
 	<property>	
 		<name>dfs.datanode.data.dir</name>		
-		<value>file://${HOME}/hadoop/data/dataNode</value>		
+		<value>file:///home/{user_name}/hadoop/data/dataNode</value>		
 	</property>	
 	<property>		
 		<name>dfs.replication</name>		
@@ -290,6 +292,9 @@ export MASTER_NODE="master"
 ```
 
 4. Edit **$HADOOP_HOME/etc/hadoop/yarn-site.xml** in the yanr-site, which node will manager all resources. We will use master node to manage all the other nodes.
+
+- Remember to change the ${MASTER_NODE} to the actual master host name, in my case it's "master".
+
 ```xml
 <configuration>
 	<property>
@@ -356,6 +361,7 @@ Datanode
 ### MapReduce test.
 
 1. Create a _books_ directory
+- note that the /user/**username** the username must match with the username that you use to install hadoop.
 ```bash
 hdfs dfs -mkdir -p /user/hadoop
 hdfs dfs -mkdir books
@@ -387,7 +393,7 @@ yarn node -list
 
 6. Submit a job with the sample `jar` to YARN. On **node-master** .
 ```bash
-yarn jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.1.2.jar wordcount "books/*" output
+yarn jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.1.jar wordcount "books/*" output
 ```
 
 7.  To see the result of hadoop after mapreduce, run.
