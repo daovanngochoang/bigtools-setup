@@ -4,7 +4,7 @@
 
 ## Hadoop installation on single node cluster.
 
-**Step 1:**  Generate SSH key and test ssh
+### Step 1:  Generate SSH key and test ssh
 ```bash
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
 cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
@@ -15,7 +15,7 @@ chmod 0600 ~/.ssh/authorized_keys
 ssh localhost
 ```
 
-**Step 2: Install Java 8 and necessary libs**
+### Step 2: Install Java 8 and necessary libs
 ```bash
 sudo apt-get install openjdk-8-jdk \
 		net-tools curl netcat \
@@ -23,7 +23,7 @@ sudo apt-get install openjdk-8-jdk \
 		libsnappy-dev -y
 ```
 
-**Step 3: Download hadoop.**
+### Step 3: Download hadoop.
 ```bash
 curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
@@ -33,7 +33,7 @@ mv hadoop-$hadoop_version hadoop
 sudo mv hadoop /opt/hadoop
 ```
 
-**Step 4: Edit .bashrc or .zshrc base on what shell you are using**
+### Step 4: Edit .bashrc or .zshrc base on what shell you are using
 ```bash
 # config java home paths. 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 
@@ -57,8 +57,9 @@ export MASTER_NODE="localhost"
 
 ```
 
-**Step 5:** **Edit Config file**
-1. **core-site.xml**
+### Step 5: Edit Config file
+1. Edit **$HADOOP_HOME/etc/hadoop/core-site.xml** to decide what is the master node.
+
 ```xml
 <configuration>
 	<property>
@@ -67,8 +68,9 @@ export MASTER_NODE="localhost"
 	</property>
 </configuration>
 ```
+<br />
 
-2. **hdfs-site.xml**
+2. Edit **$HADOOP_HOME/etc/hadoop/hdfs-site.xml**
 ```xml
 <configuration>
 	<property>
@@ -85,8 +87,9 @@ export MASTER_NODE="localhost"
 	</property>
 </configuration>
 ```
+<br />
 
-3. **mapred-site.xml**
+3. Edit **$HADOOP_HOME/etc/hadoop/mapred-site.xml**
 ```xml
 <configuration>
 	<property>
@@ -107,7 +110,9 @@ export MASTER_NODE="localhost"
 	</property>
 </configuration>
 ```
-4. **yarn-site.xml**
+<br />
+
+4. Edit **$HADOOP_HOME/etc/hadoop/yarn-site.xml** in the yanr-site, which node will manager all resources. We will use master node to manage all the other nodes.
 ```xml
 <configuration>
 	<property>
@@ -128,6 +133,7 @@ export MASTER_NODE="localhost"
 	</property>
 </configuration>
 ```
+<br />
 
 5. add to ***$HADOOP_HOME/etc/hadoop/hadoop-env.sh***
 ```bash
@@ -141,7 +147,7 @@ echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 " >> $HADOOP_HOME/etc/h
 1. The master machine should be the machine that you are currently working on the installation process.
 2. Both master machine and slave machines should have the same user, for example on master we have the user name hadoop then all the slaves should have the hadoop user to make things work. it's the the easiest way to install hadoop.
 
-**Step 1: edit */etc/hosts* file.** *(Both on the master and slaves)*
+### Step 1: edit */etc/hosts* file. *(Both on the master and slaves)*
 1. open file with text editor as super user.
 ```bash
 sudo nano /etc/hosts
@@ -159,7 +165,7 @@ sudo nano /etc/hosts
 ```
 
 
-**Step 2:**  Generate SSH key and copy to slaves.
+### Step 2:  Generate SSH key and copy to slaves.
 1. Generate ssh key.
 ```bash
 ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
@@ -188,7 +194,7 @@ ssh slave-3
 ```
 
 
-**Step 3: Install Java 8 and necessary libs** *(Both on the master and slaves)*
+### Step 3: Install Java 8 and necessary libs *(Both on the master and slaves)*
 ```bash
 sudo apt-get install openjdk-8-jdk \
 		net-tools curl netcat \
@@ -196,7 +202,7 @@ sudo apt-get install openjdk-8-jdk \
 		libsnappy-dev -y
 ```
 
-**Step 4: Download hadoop.** *(Both on the master and slaves)*
+### Step 4: Download hadoop. *(Both on the master and slaves)*
 ```bash
 curl -O https://dist.apache.org/repos/dist/release/hadoop/common/KEYS
 wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.1/hadoop-3.3.1.tar.gz
@@ -206,7 +212,7 @@ mv hadoop-$hadoop_version hadoop
 sudo mv hadoop /opt/hadoop
 ```
 
-**Step 5: Edit .bashrc or .zshrc base on what shell you are using** *(Both on the master and slaves)*
+### Step 5: Edit .bashrc or .zshrc base on what shell you are using *(Both on the master and slaves)*
 ```bash
 # config java home paths. 
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 
@@ -230,7 +236,7 @@ export MASTER_NODE="master"
 
 ```
 
-**Step 6:** **Edit Config file** *(Both on the master and slaves)*
+### Step 6: Edit Config file *(Both on the master and slaves)*
 
 1. Edit **$HADOOP_HOME/etc/hadoop/core-site.xml** to decide what is the master node.
 ```xml
@@ -309,7 +315,7 @@ export MASTER_NODE="master"
 echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64 " >> $HADOOP_HOME/etc/hadoop/hadoop-env.sh
 ```
 
-**Step 7:** **add slaves to workers file, you need to add all slave hostname to this file.**
+### Step 7: add slaves to workers file, you need to add all slave hostname to this file.
 1. Open with editor.
 ```bash
 nano $HADOOP_HOME/etc/hadoop/workers
@@ -346,7 +352,7 @@ Datanode
 
 3. You can run http://node-master-IP:9870 this to see the web app, remember to replace the node-master-ip by the real ip.
 
-## MapReduce test.
+### MapReduce test.
 
 1. Create a _books_ directory
 ```bash
