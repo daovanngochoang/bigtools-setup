@@ -29,7 +29,7 @@ After generate key we are able to connect to our machine with ssh
 ```bash
 ssh localhost
 ```
-However, to establish connections with other machine we have to copy the ssh key to the other machine.
+However, to establish connections with other machines we have to copy the ssh key to the other machine.
 
 2. Copy the key to the worker machines.
 ```bash
