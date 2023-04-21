@@ -69,7 +69,7 @@ func generateAndWriteHadoopConfig(masterHost, hadoopHome string) {
 
 	coreSiteConfig.Property = append(
 		coreSiteConfig.Property,
-		Property{Name: "fs.defaultFS", Value: fmt.Sprintf("hdfs://%s:9000", masterHost)},
+		Property{Name: "fs.defaultFS", Value: fmt.Sprintf("hdfs://%s:9000", "0.0.0.0")},
 	)
 
 	// Construct hdfSite confid
