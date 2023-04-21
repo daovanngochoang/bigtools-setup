@@ -2,11 +2,11 @@
 This app created to simplify bigdata tools installation process which is tested and run on debian based linux (ubuntu 20.04 or higher is recommended).
 
 ### Contents
-1. [Create User and establish ssh connection](https://github.com/daovanngochoang/bigdata-tools-setup#setup-process)
-2. [Install Hadoop](https://github.com/daovanngochoang/bigdata-tools-setup#install-hadoop)
+1. [Create User and establish ssh connection](#setup-process)
+2. [Install Hadoop](#install-hadoop)
 
 
-### Setup process.
+## Setup process.
 All machine should have the ability to connect to each other via ssh, 
 therefore we have to generate key in the master and copy it to the worker machine.
 
@@ -29,7 +29,7 @@ After generate key we are able to connect to our machine with ssh
 ```bash
 ssh localhost
 ```
-However, to establish connections with other machine we have to copy the ssh key to the other machine.
+However, to establish connections with other machines we have to copy the ssh key to the target machines.
 
 2. Copy the key to the worker machines.
 ```bash
@@ -41,7 +41,7 @@ scp ~/.ssh/authorized_keys worker-1:~/.ssh/authorized_keys
 scp ~/.ssh/authorized_keys worker-2:~/.ssh/authorized_keys
 scp ~/.ssh/authorized_keys worker-3:~/.ssh/authorized_keys
 ```
-3. Test SSH and all shoud be work without
+3. Test SSH and all shoud be work without password
 ```bash
 ssh master
 ssh slave-1
@@ -50,7 +50,7 @@ ssh slave-3
 ```
 ### Step 3: Download installation.
 ```bash
-wget https://github.com/daovanngochoang/bigdata-tools-setup/raw/main/bigtools_cli/bin/bigtools.run
+wget https://github.com/daovanngochoang/bigtools-setup/raw/main/bigtools_cli/bin/bigtools.run
 ```
 # App overview.
 *To see the usage of the app run this:*
@@ -73,8 +73,8 @@ Flags:
 Use "bigtools [command] --help" for more information about a command.
 ```
 
-# Install hadoop
-#### NOTE: make sure you complete [Create User and establish ssh connection](https://github.com/daovanngochoang/bigdata-tools-setup#setup-process) process 
+## Install hadoop
+#### NOTE: make sure you complete [Create User and establish ssh connection](#setup-process) process 
 
 *To see more about commands support to hadoop tool run :*
 ```bash
@@ -129,7 +129,7 @@ Flags:
   -w, --worker-ips stringArray   ip addresses of the worker nodes
 
 ```
-It has the Examples for this command, to install on multi node cluster you have to get the public
-ipaddress of the master machine and put it after the -m flag and add multiple worker ips after the multiple -w flag.
+The output contains the Example for installing hadoop on multi nodes, you have to get the public
+ipaddress of the master machine and put it after the -m flag and add multiple worker's ips after multiple -w flag respectively.
 
-Run this command on the master machine, it will take care of the rest of installation process on worker machine and master.
+Run this command on the master machine, it will take care of the rest of installation process on both master & worker machines .
