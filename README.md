@@ -29,7 +29,7 @@ After generate key we are able to connect to our machine with ssh
 ```bash
 ssh localhost
 ```
-However, to establish connections with other machines we have to copy the ssh key to the other machine.
+However, to establish connections with other machines we have to copy the ssh key to the target machines.
 
 2. Copy the key to the worker machines.
 ```bash
@@ -41,7 +41,7 @@ scp ~/.ssh/authorized_keys worker-1:~/.ssh/authorized_keys
 scp ~/.ssh/authorized_keys worker-2:~/.ssh/authorized_keys
 scp ~/.ssh/authorized_keys worker-3:~/.ssh/authorized_keys
 ```
-3. Test SSH and all shoud be work without
+3. Test SSH and all shoud be work without password
 ```bash
 ssh master
 ssh slave-1
