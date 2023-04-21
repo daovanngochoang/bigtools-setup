@@ -2,7 +2,7 @@
 This app created to simplify hadoop installation process which is tested and run on debian based linux (ubuntu 20.04 or higher is recommended).
 
 ### Contents
-1. [Create User and establish ssh connection](https://github.com/daovanngochoang/bigdata-tools-setup#Setup process)
+1. [Create User and establish ssh connection](https://github.com/daovanngochoang/bigdata-tools-setup#setup-process)
 2. [Install Hadoop](https://github.com/daovanngochoang/bigdata-tools-setup#install-hadoop)
 
 
