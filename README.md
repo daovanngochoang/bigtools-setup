@@ -1,6 +1,11 @@
 # Bigtools CLI app.
 This app created to simplify hadoop installation process which is tested and run on debian based linux (ubuntu 20.04 or higher is recommended).
 
+### Contents
+1. [Create User and establish ssh connection](https://github.com/daovanngochoang/bigdata-tools-setup#install-hadoop)
+2. [Install Hadoop](https://github.com/daovanngochoang/bigdata-tools-setup#install-hadoop)
+
+
 ### Setup process.
 All machine should have the ability to connect to each other via ssh, 
 therefore we have to generate key in the master and copy it to the worker machine.
