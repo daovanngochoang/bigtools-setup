@@ -1,7 +1,7 @@
 	# Introduction.
-1. This is a flexible tutorial that help you install hadoop on both [single node](https://github.com/daovanngochoang/bigdata-tools-setup/blob/main/HadoopSetup.md#hadoop-installation-on-single-node-cluster) and [multiple nodes cluster](https://github.com/daovanngochoang/bigdata-tools-setup/blob/main/HadoopSetup.md#hadoop-installation-on-multiple-nodes-cluster).
+1. This is a flexible tutorial that help you install hadoop on both [single node](https://github.com/daovanngochoang/bigtools-setup/blob/main/HadoopSetup.md#hadoop-installation-on-single-node-cluster) and [multiple nodes cluster](https://github.com/daovanngochoang/bigtools-setup/blob/main/HadoopSetup.md#hadoop-installation-on-multiple-nodes-cluster).
 2. There are several important file we are going to change that are the xml config file, workers and hosts file, read carefully my explaination before editing the file.
-3. The last section we try to [run](https://github.com/daovanngochoang/bigdata-tools-setup/blob/main/HadoopSetup.md#run-hadoop) the setup.
+3. The last section we try to [run](https://github.com/daovanngochoang/bigtools-setup/blob/main/HadoopSetup.md#run-hadoop) the setup.
 4. I recommend that you shold create a user named **hadoop**
 
 # Hadoop installation on single node cluster.
