@@ -2,8 +2,8 @@
 This app created to simplify bigdata tools installation process which is tested and run on debian based linux (ubuntu 20.04 or higher is recommended).
 
 ### Contents
-1. [Create User and establish ssh connection](https://github.com/daovanngochoang/bigdata-tools-setup#setup-process)
-2. [Install Hadoop](https://github.com/daovanngochoang/bigdata-tools-setup#install-hadoop)
+1. [Create User and establish ssh connection](#setup-process)
+2. [Install Hadoop](#install-hadoop)
 
 
 ### Setup process.
@@ -74,7 +74,7 @@ Use "bigtools [command] --help" for more information about a command.
 ```
 
 # Install hadoop
-#### NOTE: make sure you complete [Create User and establish ssh connection](https://github.com/daovanngochoang/bigdata-tools-setup#setup-process) process 
+#### NOTE: make sure you complete [Create User and establish ssh connection](#setup-process) process 
 
 *To see more about commands support to hadoop tool run :*
 ```bash
