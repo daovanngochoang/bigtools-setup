@@ -50,7 +50,7 @@ ssh slave-3
 ```
 ### Step 3: Download installation.
 ```bash
-wget https://github.com/daovanngochoang/bigdata-tools-setup/raw/main/bigtools_cli/bin/bigtools.run
+wget https://github.com/daovanngochoang/bigtools-setup/raw/main/bigtools_cli/bin/bigtools.run
 ```
 # App overview.
 *To see the usage of the app run this:*
