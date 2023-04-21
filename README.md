@@ -6,7 +6,7 @@ This app created to simplify bigdata tools installation process which is tested 
 2. [Install Hadoop](#install-hadoop)
 
 
-### Setup process.
+## Setup process.
 All machine should have the ability to connect to each other via ssh, 
 therefore we have to generate key in the master and copy it to the worker machine.
 
@@ -73,7 +73,7 @@ Flags:
 Use "bigtools [command] --help" for more information about a command.
 ```
 
-# Install hadoop
+## Install hadoop
 #### NOTE: make sure you complete [Create User and establish ssh connection](#setup-process) process 
 
 *To see more about commands support to hadoop tool run :*
