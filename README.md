@@ -129,7 +129,7 @@ Flags:
   -w, --worker-ips stringArray   ip addresses of the worker nodes
 
 ```
-It has the Examples for this command, to install on multi node cluster you have to get the public
-ipaddress of the master machine and put it after the -m flag and add multiple worker ips after the multiple -w flag.
+The output contains the Example for installing hadoop on multi nodes, you have to get the public
+ipaddress of the master machine and put it after the -m flag and add multiple worker's ips after multiple -w flag respectively.
 
-Run this command on the master machine, it will take care of the rest of installation process on worker machine and master.
+Run this command on the master machine, it will take care of the rest of installation process on both master & worker machines .
